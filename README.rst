@@ -100,6 +100,11 @@ The tests can then be run from the folder ``tests/`` using::
 
 django-admin.py test --settings=xapian_settings xapian_tests
 
+Notes
+-----
+
+If you are using boosting, make shure you use integers only for the boost value. Xapian excepts them
+as integers and the python wrapper silently converts them to ints.
 
 Source
 ------
