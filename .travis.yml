@@ -11,7 +11,7 @@ install:
   - cd ..
   - git clone https://github.com/toastdriven/django-haystack.git
   - sudo apt-get install -qq libxapian22 xapian-tools python-xapian
-  - ln -s /usr/lib/python2.7/dist-packages/xapian $VIRTUAL_ENV/lib/python2.7/site-packages/.
+  - ln -s /usr/lib/python${TRAVIS_PYTHON_VERSION}/dist-packages/xapian $VIRTUAL_ENV/lib/python${TRAVIS_PYTHON_VERSION}/site-packages/.
 
 # move xapian-haystack to django-haystack
 before_script:
