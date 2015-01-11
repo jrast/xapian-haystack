@@ -14,6 +14,6 @@ install:
 script:
   - tox
 
-evn:
+env:
   - TOXENV=django16-haystack220-xapian1219
   - TOXENV=django17-haystack220-xapian1219
