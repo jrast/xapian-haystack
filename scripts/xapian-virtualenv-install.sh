@@ -1,6 +1,5 @@
 #!/bin/bash
 set -e
-echo "VENV = $VIRTUAL_ENV"
 if [[ "$VIRTUAL_ENV" == "" ]]
 then
     echo "This Script must be run from within a virtualenv";
@@ -31,7 +30,7 @@ cd $venv/src/xapian-core-$pkgver
 
 install_xapian_core()
 {
-    ./configure --prefix=$venv && make && make install
+    ./configure --prefix=$venv && make -s && make -s install
 }
 install_xapian_core || { echo "Installing Xapian Core failed"; exit 1; }
 
@@ -41,7 +40,7 @@ cd $venv/src/xapian-bindings-$pkgver
 
 install_xapian_bindings()
 {
-    ./configure --prefix=$venv --with-python && make && make install
+    ./configure --prefix=$venv --with-python && make -s && make -s install
 }
 install_xapian_bindings || { echo "Installing Xapian Bindings failed"; exit 1; }
 

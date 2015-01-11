@@ -2,11 +2,18 @@ language: python
 python:
   - "2.7"
 
+
 # command to install dependencies
 install:
   - sudo apt-get install -qq uuid-dev
   - pip install tox
 
+
+
 # command to run tests
 script:
   - tox
+
+evn:
+  - TOXENV=django16-haystack220-xapian1219
+  - TOXENV=django17-haystack220-xapian1219

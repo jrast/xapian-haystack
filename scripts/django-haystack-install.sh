@@ -9,5 +9,7 @@ fi
 if [ ! -d "$VIRTUAL_ENV/src/django-haystack" ] 
 then
     git clone https://github.com/toastdriven/django-haystack.git $VIRTUAL_ENV/src/django-haystack
-    cd $VIRTUAL_ENV/src/django-haystack && pip install -e .
+    cd $VIRTUAL_ENV/src/django-haystack
+    git checkout ${HAYSTACK_VERSION:-"master"}
+    pip install -e .
 fi
