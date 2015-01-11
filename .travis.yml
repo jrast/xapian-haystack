@@ -9,11 +9,26 @@ install:
   - pip install tox
 
 
-
 # command to run tests
 script:
-  - tox
+  - tox -e $TOXENV
 
 env:
-  - TOXENV=django16-haystack220-xapian1219
+  - TOXENV=django167-haystack220-xapian1219
+  - TOXENV=django167-haystack221-xapian1219
+  - TOXENV=django167-haystackmaster-xapian1219
+  - TOXENV=django168-haystack220-xapian1219
+  - TOXENV=django168-haystack221-xapian1219
+  - TOXENV=django168-haystackmaster-xapian1219
+  - TOXENV=django169-haystack220-xapian1219
+  - TOXENV=django169-haystack221-xapian1219
+  - TOXENV=django169-haystackmaster-xapian1219
   - TOXENV=django17-haystack220-xapian1219
+  - TOXENV=django17-haystack221-xapian1219
+  - TOXENV=django17-haystackmaster-xapian1219
+
+matrix:
+  allow_failures:
+    - env: TOXENV=django17_haystack220-xapian1219
+    - env: TOXENV=django17_haystack221-xapian1219
+    - env: TOXENV=django17_haystackmaster-xapian1219
