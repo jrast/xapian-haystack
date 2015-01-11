@@ -4,6 +4,7 @@ python:
 
 # command to install dependencies
 install:
+  - sudo apt-get install -qq uuid-dev
   - pip install tox
 
 # command to run tests
