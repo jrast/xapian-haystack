@@ -28,20 +28,27 @@ $download $xapian_bind && tar xf xapian-bindings-$pkgver.tar.xz
 
 cd $venv/src/xapian-core-$pkgver
 
-install_xapian_core()
-{
-    ./configure --prefix=$venv && make -s && make -s install
-}
-install_xapian_core || { echo "Installing Xapian Core failed"; exit 1; }
+echo "Configuring Xapian Core..."
+./configure --prefix=$venv >/dev/null || { echo "Configuration failed"; exit 1; }
+
+echo "Building Xapian Core, this can take a while..."
+make >/dev/null || { echo "Make failed"; exit 1; }
+
+echo "Installing Xapian Core..."
+make install >/dev/null || { echo "Installation failed"; exit 1; }
 
 export LD_LIBRARY_PATH=$venv/lib
 
 cd $venv/src/xapian-bindings-$pkgver
 
-install_xapian_bindings()
-{
-    ./configure --prefix=$venv --with-python && make -s && make -s install
-}
-install_xapian_bindings || { echo "Installing Xapian Bindings failed"; exit 1; }
+echo "Configureing Xapian Python Binding..."
+./configure --prefix=$venv --with-python >/dev/null || { echo "Configuration failed"; exit 1; }
 
+echo "Building Xapian Binding for Python, this can take a while..."
+make >/dev/null || { echo "Make failed"; exit 1; }
+
+echo "Installing Xapian Binding for Python..."
+make install >/dev/null { echo "Installation failed"; exit 1; }
+
+# Check if xapian is available in python
 python -c"import xapian" && echo "Successfully installed Xapian with Python extensions"
